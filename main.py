@@ -95,7 +95,8 @@ def update_google_sheet():
         phuc, phuc_growth, gap_phuc, gap_phuc_growth
     ]
 
-    sheet.append_row(row, value_input_option="RAW")
+    sheet.insert_row(row, index=2, value_input_option="RAW")
+
 
     # Update state
     prev_votes.update(votes)
@@ -122,6 +123,7 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 10000))
     )
+
 
 
 
