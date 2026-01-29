@@ -1,6 +1,8 @@
 import time
 import requests
 import gspread
+import os
+import json
 from datetime import datetime
 from google.oauth2.service_account import Credentials
 
@@ -22,7 +24,13 @@ PHUC_NGUYEN_ID = 61
 
 # ================== GOOGLE SHEETS ==================
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-creds = Credentials.from_service_account_file(CREDS_FILE, scopes=SCOPES)
+creds_dict = json.loads(os.environ["GOOGLE_CREDENTIALS"])
+
+creds = Credentials.from_service_account_info(
+    creds_dict,
+    scopes=["https://www.googleapis.com/auth/spreadsheets"]
+)
+
 gc = gspread.authorize(creds)
 sheet = gc.open_by_key(SHEET_ID).sheet1
 
