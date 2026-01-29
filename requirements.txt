@@ -1,3 +1,4 @@
-requests
+flask
 gspread
-oauth2client
+google-auth
+requests
