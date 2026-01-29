@@ -36,7 +36,7 @@ PARAMS = {
 
 CREDS_FILE = "credentials.json"
 SHEET_ID = "1magHA2dA4Z0j2qUJqsF4bHIWzrmJyGGNQ1MqQQx_GMQ"
-FETCH_INTERVAL = 5  # seconds
+FETCH_INTERVAL = 10  # seconds
 
 CUONG_BACH_ID = 66
 CONGB_ID = 58
@@ -118,4 +118,5 @@ while True:
     prev_gap_phuc = gap_phuc
 
     time.sleep(FETCH_INTERVAL)
+
 
