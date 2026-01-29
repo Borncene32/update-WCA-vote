@@ -25,7 +25,7 @@ PARAMS = {
 }
 
 SHEET_ID = "1magHA2dA4Z0j2qUJqsF4bHIWzrmJyGGNQ1MqQQx_GMQ"
-FETCH_INTERVAL = 1  # seconds (>=30s cho an toàn quota)
+FETCH_INTERVAL = 5  # seconds (>=30s cho an toàn quota)
 
 CUONG_BACH_ID = 66
 CONGB_ID = 58
@@ -122,5 +122,6 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 10000))
     )
+
 
 
