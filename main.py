@@ -7,6 +7,8 @@ import gspread
 from datetime import datetime
 from flask import Flask
 from google.oauth2.service_account import Credentials
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 # ================== FLASK ==================
 app = Flask(__name__)
@@ -65,7 +67,7 @@ def update_google_sheet():
     global prev_gap_cong, prev_gap_phuc
 
     votes = fetch_votes()
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")).strftime("%Y-%m-%d %H:%M:%S")
 
     cb = votes.get(CUONG_BACH_ID, 0)
     cong = votes.get(CONGB_ID, 0)
@@ -123,6 +125,7 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 10000))
     )
+
 
 
 
