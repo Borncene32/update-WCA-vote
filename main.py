@@ -6,6 +6,26 @@ import json
 from datetime import datetime
 from google.oauth2.service_account import Credentials
 
+
+from flask import Flask
+import threading
+import time
+
+app = Flask(__name__)
+
+def vote_worker():
+    while True:
+        update_google_sheet()
+        time.sleep(30)
+
+@app.route("/")
+def home():
+    return "OK", 200
+
+if __name__ == "__main__":
+    t = threading.Thread(target=vote_worker, daemon=True)
+    t.start()
+    app.run(host="0.0.0.0", port=10000)
 # ================== CONFIG ==================
 API_URL = "https://voting.net-solutions.vn/wechoice/v2/voting/vote-count"
 PARAMS = {
@@ -98,3 +118,4 @@ while True:
     prev_gap_phuc = gap_phuc
 
     time.sleep(FETCH_INTERVAL)
+
